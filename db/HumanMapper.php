@@ -13,7 +13,7 @@ class HumanMapper
         
         $conn = $this->dbconn->getConnection();
         
-        $stmt = $conn->prepare("INSERT INTO human (name, is_redpill, is_jackedin, health, rank VALUES (:name, :red, :jack, :health, :rank)");
+        $stmt = $conn->prepare("INSERT INTO human (name, is_redpill, is_jackedin, health, rank) VALUES (:name, :red, :jack, :health, :rank)");
         
         $stmt->bindParam(':name', $humanObj->getName());
         $stmt->bindParam(':red', $humanObj->getIs_redpill());
@@ -46,5 +46,15 @@ class HumanMapper
        $humans = $result->fetchAll();
         
         return $humans;
+      
     }
+    /*
+    function updateHuman(){
+        
+        $conn = $this->dbconn->getConnection();
+        
+        $stmt = $conn->prepare("UPDATE human SET ")
+        
+    }
+    */
     }

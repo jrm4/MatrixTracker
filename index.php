@@ -18,7 +18,7 @@ require("human.php");
 require("hovercraft.php");
 require("./db/dbconn.php");
 require("./db/HumanMapper.php");
-$db = new Dbconn('localhost', 'Matrix', 'root', 'blahblahblah');
+$db = new Dbconn('localhost', 'Matrix', 'root', 'p|||p');
 
 
 //require ("crew.php");
@@ -26,7 +26,7 @@ $db = new Dbconn('localhost', 'Matrix', 'root', 'blahblahblah');
 //require ("./forms/addhovercraft.php");
 
 //$neb->fullcrewreport();
-echo "requires done";
+//echo "requires done";
 
 // TESTING THE MAPPER:
 
@@ -41,9 +41,13 @@ echo "requires done";
 $mapper = new HumanMapper($db);
 
 
-echo "Mapper complete?";
 
-//$mapper->createHuman($biff);
+$test_human = new Human("Test1");
+
+
+$cresult = $mapper->createHuman($test_human);
+
+
 
 
 
