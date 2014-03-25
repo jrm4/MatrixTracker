@@ -1,6 +1,9 @@
 <?php
 
 
+# INCLUDED ONLY FOR LEARNING PURPOSES.
+# THIS PAGE IS NOT USED IN THE MAIN CODE
+# YOU HAVE BEEN WARNED
 
  class Crew {
      protected $id_crew;
@@ -62,25 +65,7 @@
      
      
     # Probably will change the below to something nice
-     public function fullcrewreport(){
-         
-         echo "<h3>Full Crew Report:</h3>";
-         
-         if ($this->crewlist == NULL ){
-             echo "<br>Empty crew. Assign Personnel";
-         }
-         else {
-         
-        
-         echo "<br>.";
-         echo "Your crew:";
-         
-         foreach ($this->crewlist as $crewmember){
-             echo "<li>" . $crewmember->getName() . "</li>";
-         }
-     }
-     
-     }
+
  
 
  }
