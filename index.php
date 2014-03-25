@@ -18,7 +18,7 @@ require("human.php");
 require("hovercraft.php");
 require("./db/dbconn.php");
 require("./db/HumanMapper.php");
-$db = new Dbconn('localhost', 'Matrix', 'root', 'p|||p');
+$db = new Dbconn('localhost', 'Matrix', 'root', 'blahblahblah');
 
 
 //require ("crew.php");
@@ -49,6 +49,7 @@ echo "Mapper complete?";
 
 
 $allhumans = $mapper->retrieveHumans();
+
 
 
 foreach ($allhumans as $human){
