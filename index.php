@@ -18,7 +18,8 @@ require("human.php");
 require("hovercraft.php");
 require("./db/dbconn.php");
 require("./db/HumanMapper.php");
-$db = new Dbconn('localhost', 'Matrix', 'root', 'p|||p');
+require(".db/dblogin.php");
+
 
 
 //require ("crew.php");
