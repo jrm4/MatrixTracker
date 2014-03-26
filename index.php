@@ -38,26 +38,22 @@ $db = new Dbconn('localhost', 'Matrix', 'root', 'p|||p');
 
 // create humanmapper object
 
+
+
 $mapper = new HumanMapper($db);
-
-
 
 $test_human = new Human("Test1");
 
 
 $cresult = $mapper->createHuman($test_human);
 
-
-
-
-
+//
 
 $allhumans = $mapper->retrieveHumans();
 
 
-
 foreach ($allhumans as $human){
-    echo "<br>Human 1 is " . $human->getName() ;
+    echo "<br>Human is " . $human->getName() ;
 }
 //
 

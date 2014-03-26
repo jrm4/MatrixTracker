@@ -19,7 +19,7 @@ class HumanMapper
         $stmt->bindParam(':red', $humanObj->getIs_redpill());
         $stmt->bindParam(':jack', $humanObj->getIs_jackedin());
         $stmt->bindParam(':health', $humanObj->getHealth());
-        $stmt->bindParam(':name', $humanObj->getRank());
+        $stmt->bindParam(':rank', $humanObj->getRank());
         
         $result = $stmt->execute();
         
