@@ -48,13 +48,43 @@ class HumanMapper
         return $humans;
       
     }
-    /*
-    function updateHuman(){
+    
+    function retrieveHuman($id_human)
+    {
+                //Connect to database by creating PDO object
+        $conn = $this->dbconn->getConnection();
+        
+        //Run a query
+        $result = $conn->query("SELECT * FROM human WHERE id_human = $id_human;");      
+        
+        //Results from the databse will be converted into Student objects
+        $result->setFetchMode(PDO::FETCH_CLASS, 'human');           
+        $students = $result->fetch(); 
+        
+        return $students;  
+    }
+    
+    function updateHuman($humanObj){
         
         $conn = $this->dbconn->getConnection();
         
-        $stmt = $conn->prepare("UPDATE human SET ")
+        $stmt = $conn->prepare('UPDATE human SET name = :name, is_redpill = :red, is_jackedin = :jack, health = :health, rank = :rank WHERE id_human = :id');
         
-    }
-    */
+        $stmt->bindParam(':id', $humanObj->getId());
+        $stmt->bindParam(':name', $humanObj->getName());
+        $stmt->bindParam(':red', $humanObj->getIs_redpill());
+        $stmt->bindParam(':jack', $humanObj->getIs_jackedin());
+        $stmt->bindParam(':health', $humanObj->getHealth());
+        $stmt->bindParam(':rank', $humanObj->getRank());
+        
+        $result = $stmt->execute();
+        
+        if ($result === false){
+            var_dump($conn->errorCode());
+        }
+        
+        return $result;
+        
+    }   
+    
     }

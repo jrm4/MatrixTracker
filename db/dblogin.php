@@ -1,6 +1,10 @@
 <?php
 
-$db = new Dbconn('localhost', 'Matrix', 'root', 'p|||p');
 
+
+$dbhost = "localhost";
+$dbname = "Matrix";
+$dbuser = "root";
+$dbpass = "p|||p";
 
 ?>

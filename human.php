@@ -28,6 +28,11 @@ class Human
         $this->setIs_jackedin(FALSE);
 
     }
+        
+        public function getId(){
+            return $this->id_human;
+        }
+        
         public function setName($name) {
             $this->name = $name;
         }

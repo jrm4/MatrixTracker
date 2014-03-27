@@ -18,9 +18,12 @@ require("human.php");
 require("hovercraft.php");
 require("./db/dbconn.php");
 require("./db/HumanMapper.php");
-require(".db/dblogin.php");
+//require(".db/dblogin.php"); // ha HA, git will ignore the file. My password is safe.
 
 
+
+
+$db = new Dbconn('localhost','Matrix','root','p|||p');
 
 //require ("crew.php");
 //require ("./forms/addhuman.php");
@@ -43,23 +46,45 @@ require(".db/dblogin.php");
 
 $mapper = new HumanMapper($db);
 
-$test_human = new Human("Test1");
+$neo = new Human("Neo");
 
+$neo->setRank(4);
 
-$cresult = $mapper->createHuman($test_human);
+$cresult = $mapper->createHuman($neo);
 
-//
+echo "<br> $cresult is cresult";
 
 $allhumans = $mapper->retrieveHumans();
 
-
+echo "<ol>";
 foreach ($allhumans as $human){
-    echo "<br>Human is " . $human->getName() ;
+    echo "<li>Human: " . $human->getName() ;
+    echo "<br>rank is " . $human->getRank();
+    echo "</li>";
 }
-//
+echo "</ol>";
 
 
+
+
+
+$neo->fullhumanreport();
+
+
+$cresult = $mapper->updateHuman($neo);
+
+echo "<br> $cresult is cresult";
+
+$allhumans = $mapper->retrieveHumans();
         
+echo "<ol>";
+foreach ($allhumans as $human){
+    echo "<li>Human: " . $human->getName() ;
+    echo "<br>rank is " . $human->getRank();
+    echo "</li>";
+
+    echo "</ol>";
+}    
         ?>
     </body>
 </html>
