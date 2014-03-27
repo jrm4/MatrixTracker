@@ -25,66 +25,51 @@ require("./db/HumanMapper.php");
 
 $db = new Dbconn('localhost','Matrix','root','p|||p');
 
-//require ("crew.php");
-//require ("./forms/addhuman.php");
-//require ("./forms/addhovercraft.php");
-
-//$neb->fullcrewreport();
-//echo "requires done";
-
-// TESTING THE MAPPER:
-
-//CREATE A HUMAN
-
-//$biff = new Human("Biff");
-
-//$biff->fullhumanreport();
-
-// create humanmapper object
 
 
 
 $mapper = new HumanMapper($db);
 
+//Create human IN MEMORY
 $neo = new Human("Neo");
-
-$neo->setRank(4);
-
-$cresult = $mapper->createHuman($neo);
-
-echo "<br> $cresult is cresult";
-
-$allhumans = $mapper->retrieveHumans();
-
-echo "<ol>";
-foreach ($allhumans as $human){
-    echo "<li>Human: " . $human->getName() ;
-    echo "<br>rank is " . $human->getRank();
-    echo "</li>";
-}
-echo "</ol>";
-
-
 
 
 
 $neo->fullhumanreport();
 
 
-$cresult = $mapper->updateHuman($neo);
 
-echo "<br> $cresult is cresult";
+//Create entry for new human Neo in the db
+$cresult = $mapper->createHuman($neo);
 
-$allhumans = $mapper->retrieveHumans();
+//now neo is only in memory
+$neo = NULL;
+
+//First, find neo
+
+$conn = $db->getConnection();
+$sql = 'SELECT * from human WHERE name = "Neo"';
+
+$result = $conn->query($sql);
+
+print_r($result);
+
+
+
+ $result->setFetchMode(PDO::FETCH_CLASS, 'human');
+     $humans = $result->fetchAll();
         
-echo "<ol>";
-foreach ($allhumans as $human){
-    echo "<li>Human: " . $human->getName() ;
-    echo "<br>rank is " . $human->getRank();
-    echo "</li>";
+ echo "<br> humans is: ";    
+$humans[0]->fullhumanreport();
 
-    echo "</ol>";
-}    
-        ?>
+
+    
+
+
+
+
+
+
+     ?>
     </body>
 </html>

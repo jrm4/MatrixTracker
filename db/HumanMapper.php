@@ -59,9 +59,9 @@ class HumanMapper
         
         //Results from the databse will be converted into Student objects
         $result->setFetchMode(PDO::FETCH_CLASS, 'human');           
-        $students = $result->fetch(); 
+        $humans = $result->fetch(); 
         
-        return $students;  
+        return $humans;  
     }
     
     function updateHuman($humanObj){
