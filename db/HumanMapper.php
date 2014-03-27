@@ -84,7 +84,25 @@ class HumanMapper
         }
         
         return $result;
+    }
         
+    function deleteHuman($id_human){
+            
+            $conn = $this->dbconn->getConnection();
+            
+            $stmt = $conn->prepare('DELETE FROM human WHERE id_human = :id');
+            
+            $stmt->bindParam(':id', $id_human);
+            
+             $result = $stmt->execute();
+        
+        if ($result === false){
+            echo "throwin the error";
+            var_dump($conn->errorCode());
+        }
+            
+            
+        }
     }   
     
-    }
+    
