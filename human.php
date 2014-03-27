@@ -80,7 +80,7 @@ class Human
         
         public function fullhumanreport(){
             echo "<h1>Full report for " . $this->name . "</h1>";
-            echo "Internal dbid is" . $this->id_human;
+           echo "PK id is" . $this->id_human;
             echo "<br>"; 
             
             if ($this->is_redpill){

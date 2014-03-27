@@ -18,65 +18,61 @@ require("human.php");
 require("hovercraft.php");
 require("./db/dbconn.php");
 require("./db/HumanMapper.php");
-//require(".db/dblogin.php"); // ha HA, git will ignore the file. My password is safe.
-
-$db = new Dbconn('localhost','Matrix','root','p|||p');
-
-$mapper = new HumanMapper($db);
 
 //Create human IN MEMORY
 $neo = new Human("Neo");
 
 $neo->fullhumanreport();
 
-//Create entry for new human Neo in the db
+
+
+$db = new Dbconn('localhost','Matrix','root','p|||p');
+
+$mapper = new HumanMapper($db);
+
+//add neo to db
 $cresult = $mapper->createHuman($neo);
 
-//now neo is only in the DATABASE. ************************************************************8 
+
+// there are NO humans in memory.
 $neo = NULL;
 
-//First, find neo
+// Find the person(s) named Neo
 $conn = $db->getConnection();
 $sql = 'SELECT * from human WHERE name = "Neo"';
 $result = $conn->query($sql);
 
-
-// Now pull him out (ha, this metaphor is AWESOME NOW) 
  $result->setFetchMode(PDO::FETCH_CLASS, 'human');
      $humans = $result->fetchAll();
+     
+     // you should do an if statement for multples here. I'm lazy.
+    //$humans[0]->fullhumanreport();
+    
+     //empty human shell
+     $newneo = new Human();
+     
+     //Drop neo into new object
+     $newneo = $humans[0];
+     
+     //NEO GOT A PROMOTION AND IS JACKED IN
+     $newneo->setRank(7);
+     $newneo->setIs_jackedin(TRUE);
+     
+     $newneo->fullhumanreport();
+     
+     //update entry in db
+     $mapper->updateHuman($newneo);
 
-// "Lets take a look at you, Neo"
- echo "<br> humans is: ";    
-$humans[0]->fullhumanreport();
+// lets kill NEO, gasp
+     $mapper->deleteHuman($newneo->getId());
+     
+     $switch = new Human("Switch");
+     
+     $mapper->createHuman($switch);
+     
+     echo "<br> switch created";
+     
 
-//the below is optional, but it helps confirm things for us and for NetBeans
-$newneo = new Human(); 
-
-//Again, we ought to test for multiple humans in the array, but not now.
-$newneo = $humans[0];
-
-
-// NEO GOT A PROMOTION. AND IS IN THE MATRIX!
-$newneo->setRank(7);
-$newneo->setIs_jackedin(TRUE);
-
-// Verify his new status.
-$newneo->fullhumanreport();
-
-//Update his entry in mysql. 
-$mapper->updateHuman($newneo);
-
-//and now kill him:
-
-
-
-$mapper->deleteHuman($newneo->getId());
-
-//and add someone else
-
-$switch = new Human("Switch");
-
-$mapper->createHuman($switch);
 
 
 
