@@ -6,10 +6,12 @@
     if (isset($_SESSION['is_logged_in'])) {
       
       echo "welcome <br>";
+      session_destroy();
     }
     else{
         //header("Location: login.php");
         echo "sneaky fool. you're not supposed to be here.";
+        session_destroy();
         exit();
     }
     
@@ -25,5 +27,12 @@
         
         <h1>Secret Page - Only Avaiable to those who have logged in</h1>        
     </body>
-</html>
+    
+    
+    <?php
+    echo "destroying session now";
+    session_destroy();
+    ?>
+    
+    </html>
 

@@ -14,8 +14,8 @@ and open the template in the editor.
 
         <?php
         
-require("human.php");
-require("hovercraft.php");
+require("./models/human.php");
+require("./models/hovercraft.php");
 require("./db/dbconn.php");
 require("./db/HumanMapper.php");
 
