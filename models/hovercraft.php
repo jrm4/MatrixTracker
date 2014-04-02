@@ -11,8 +11,7 @@
      //class location
      protected $location;
      
-     //crew is an array of humans
-     protected $crew;
+
  
      // class human
      protected $captain;
@@ -30,7 +29,7 @@
         $this->setIs_functional(TRUE);
         $this->setIs_jackedin(FALSE);        
         $this->setLocation("Zion");
-        $this->setCrew(NULL);
+   
         
 
         
@@ -78,15 +77,6 @@
             return $this->location;
         }
         
-       
-        public function setCrew($crew){ #Assign crew to ship
-            $this->crew = $crew;
-        }
-        
-        public function getCrew(){ 
-            return $this->crew;
-        }
-       
          public function setCaptain($captain) {
             $this->captain = $captain;
         }

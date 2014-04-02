@@ -31,7 +31,7 @@ class HumanMapper
        
     }
     
-    function retrieveHumans(){
+    function retrieveAllHumans(){
     
      
         $conn = $this->dbconn->getConnection();

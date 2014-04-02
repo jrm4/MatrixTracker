@@ -11,6 +11,7 @@ class Human
     protected $health;      // integer, 10 is healthy, 0 is dead
     protected $rank;        // integer, 10 is Council elder, 0 is brand new redpill, etc. 
     protected $is_jackedin;  // boolean
+    protected $id_hovercraft; // biz logic will take care of this
     
 
     
@@ -26,6 +27,7 @@ class Human
         $this->setHealth(10);
         $this->setRank(0);
         $this->setIs_jackedin(FALSE);
+        $this->setId_hovercraft(NULL);
 
     }
         
@@ -74,46 +76,15 @@ class Human
             return $this->is_jackedin;
         }
         
-        
-        
-        // MORE LOGIC
-        
-        public function fullhumanreport(){
-            echo "<h1>Full report for " . $this->name . "</h1>";
-           echo "PK id is" . $this->id_human;
-            echo "<br>"; 
-            
-            if ($this->is_redpill){
-                echo "Origin: Redpill";
-            }
-            else {
-                echo "Origin: Natural-born";
-            }
-            
-            echo "<br>";
-            
-            if ($this->health == 0){
-                echo "DECEASED";
-                }
-            else {
-                echo "Health Level = $this->health";
-            }  
-            
-            echo "<br>";
-            
-            echo "Rank = $this->rank";
-            echo "<br>";
-            
-            if ($this->is_jackedin){
-                echo "PROCEED WITH CAUTION: JACKED IN";
-            }
-            
-            
-            
+        public function setId_hovercraft($id_hovercraft){
+            $this->id_hovercraft = $id_hovercraft;
+        }
+ 
+        public function getId_hovercraft(){
+            return $this->id_hovercraft;
         }
         
         
-    }
-
-
- // abstract class threat composed of robot or weather? 
+        // MORE LOGIC
+ 
+            }
