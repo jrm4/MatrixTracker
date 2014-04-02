@@ -13,7 +13,7 @@ class HovercraftMapper
         
         $conn = $this->dbconn->getConnection();
         
-        $stmt = $conn->prepare("INSERT INTO hovercraft (name, is_functional, is_jackedin, location) "
+        $stmt = $conn->prepare("INSERT INTO hovercraft (name, is_functional, is_jackedin, id_location) "
                 . "                             VALUES (:name, :func, :jack, :loc)");
         
         $stmt->bindParam(':name', $hovercraftObj->getName());
@@ -70,15 +70,12 @@ class HovercraftMapper
         
         $conn = $this->dbconn->getConnection();
         
-        $stmt = $conn->prepare('UPDATE hovercraft SET name = :name, is_redpill = :red, is_jackedin = :jack, health = :health, rank = :rank WHERE id_hovercraft = :id');
+        $stmt = $conn->prepare('UPDATE hovercraft SET name = :name, is_functional = :func, is_jackedin = :jack, id_location = :loc WHERE id_hovercraft = :id');
         
-        $stmt->bindParam(':id', $hovercraftObj->getId());
         $stmt->bindParam(':name', $hovercraftObj->getName());
-        $stmt->bindParam(':red', $hovercraftObj->getIs_redpill());
+        $stmt->bindParam(':func', $hovercraftObj->getIs_functional());
         $stmt->bindParam(':jack', $hovercraftObj->getIs_jackedin());
-        $stmt->bindParam(':health', $hovercraftObj->getHealth());
-        $stmt->bindParam(':rank', $hovercraftObj->getRank());
-        
+        $stmt->bindParam(':loc', $hovercraftObj->getLocation()->getId_location);
         $result = $stmt->execute();
         
         if ($result === false){

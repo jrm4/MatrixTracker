@@ -13,13 +13,14 @@ class HumanMapper
         
         $conn = $this->dbconn->getConnection();
         
-        $stmt = $conn->prepare("INSERT INTO human (name, is_redpill, is_jackedin, health, rank) VALUES (:name, :red, :jack, :health, :rank)");
+        $stmt = $conn->prepare("INSERT INTO human (name, is_redpill, is_jackedin, health, rank, id_hovercraft) VALUES (:name, :red, :jack, :health, :rank, :hov)");
         
         $stmt->bindParam(':name', $humanObj->getName());
         $stmt->bindParam(':red', $humanObj->getIs_redpill());
         $stmt->bindParam(':jack', $humanObj->getIs_jackedin());
         $stmt->bindParam(':health', $humanObj->getHealth());
         $stmt->bindParam(':rank', $humanObj->getRank());
+        $stmt->bindParam(':hov', $humanObj->getId_hovercraft());
         
         $result = $stmt->execute();
         
@@ -68,7 +69,7 @@ class HumanMapper
         
         $conn = $this->dbconn->getConnection();
         
-        $stmt = $conn->prepare('UPDATE human SET name = :name, is_redpill = :red, is_jackedin = :jack, health = :health, rank = :rank WHERE id_human = :id');
+        $stmt = $conn->prepare('UPDATE human SET name = :name, is_redpill = :red, is_jackedin = :jack, health = :health, rank = :rank, id_hovercraft = :hov WHERE id_human = :id');
         
         $stmt->bindParam(':id', $humanObj->getId());
         $stmt->bindParam(':name', $humanObj->getName());
@@ -76,6 +77,7 @@ class HumanMapper
         $stmt->bindParam(':jack', $humanObj->getIs_jackedin());
         $stmt->bindParam(':health', $humanObj->getHealth());
         $stmt->bindParam(':rank', $humanObj->getRank());
+        $stmt->bindParam(':hov', $humanObj->getId_hovercraft());
         
         $result = $stmt->execute();
         

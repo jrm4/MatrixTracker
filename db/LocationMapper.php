@@ -25,6 +25,8 @@ class LocationMapper
         }
         
         return $result;
+        
+        //locations, maybe they do change or update or get deleted, but not sure on that one...
        
     }
 }

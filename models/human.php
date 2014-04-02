@@ -11,7 +11,11 @@ class Human
     protected $health;      // integer, 10 is healthy, 0 is dead
     protected $rank;        // integer, 10 is Council elder, 0 is brand new redpill, etc. 
     protected $is_jackedin;  // boolean
-    protected $id_hovercraft; // biz logic will take care of this
+    protected $hovercraft; // HOVERCRAFT
+    
+    //properties dependent on other classes
+    
+    
     
 
     
@@ -27,7 +31,8 @@ class Human
         $this->setHealth(10);
         $this->setRank(0);
         $this->setIs_jackedin(FALSE);
-        $this->setId_hovercraft(NULL);
+        $this->setHovercraft(NULL);
+       
 
     }
         
@@ -76,12 +81,12 @@ class Human
             return $this->is_jackedin;
         }
         
-        public function setId_hovercraft($id_hovercraft){
-            $this->id_hovercraft = $id_hovercraft;
+        public function setHovercraft($hovercraft){
+            $this->hovercraft = $hovercraft;
         }
  
-        public function getId_hovercraft(){
-            return $this->id_hovercraft;
+        public function getHovercraft(){
+            return $this->hovercraft;
         }
         
         

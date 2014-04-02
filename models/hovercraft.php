@@ -11,8 +11,6 @@
      //class location
      protected $location;
      
-
- 
      // class human
      protected $captain;
      protected $operator;
@@ -28,7 +26,7 @@
         
         $this->setIs_functional(TRUE);
         $this->setIs_jackedin(FALSE);        
-        $this->setLocation("Zion");
+       //$this->setLocation("Zion");
    
         
 
@@ -77,7 +75,7 @@
             return $this->location;
         }
         
-         public function setCaptain($captain) {
+         public function setCaptain(Human $captain) {
             $this->captain = $captain;
         }
         
@@ -86,8 +84,8 @@
     
         }
         
-         public function setOperator($name) {
-            $this->operator = $name;
+         public function setOperator(Human $operator) {
+            $this->operator = $operator;
         }
         
         public function getOperator() {
@@ -95,88 +93,11 @@
     
         }
         
-        
-        
-        # CREW
-        
-     public function addHuman(Human $human){
-           
-         $this->crew[] = $human;
-         
-         
-     }
-        
-     public function removeHuman(Human $human){
-         
-         //I dont know how to do this?
-     }
-     
+   
      
         
-       //probably break this up into something prettier?
-     
-        public function fullhovercraftreport(){
-            echo "<h1> Full Status for: " . $this->name . "</h1>";
-            echo "<br>";
-            
- 
-            
-//           if ($this->crew == NULL){
-//               echo "Empty ship: Please add personnel<br>";
-//            }
-            
-            if ($this->is_functional){
-                echo "Craft is functional<br>";
-            }
-            else {
-                echo "There is a problem with the craft<br>";
-            }    
-            
-            if ($this->is_jackedin){
-                echo "PROCEED WITH CAUTION: CRAFT IS BROADCASTING TO MATRIX";
-            }
-            
-            echo "<br>";
-            echo "Current Location is: " . $this->location ;
-            echo "<br>";
-            
-            echo "<h3>Crew report</h3>";
-            echo "<br>";
-            
-            if ($this->crew == NULL){
-                echo "No crew ASSIGNED yet.";
-            }
-            else { 
-                echo "crew assigned";
-            }
-            
+      
 
-            echo "<br>-------------<br>";
-            
-            
-           
-        }        
-
-        
-             public function fullcrewreport(){
-         
-         echo "<h3>Full Crew Report:</h3>";
-         
-         if ($this->crew == NULL ){
-             echo "<br>Empty crew. Assign Personnel";
-         }
-         else {
-         
-        
-         echo "<br>.";
-         echo "Your crew:";
-         
-         foreach ($this->crew as $crewhuman){
-             echo "<li>" . $crewhuman->getName() . "</li>";
-         }
-     }
-     
-     }
         
  }
 
