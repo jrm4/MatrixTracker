@@ -66,7 +66,7 @@ class HovercraftMapper
         return $hovercrafts;  
     }
     
-    function updateHuman($hovercraftObj){
+    function updateHovercraft($hovercraftObj){
         
         $conn = $this->dbconn->getConnection();
         
@@ -85,7 +85,7 @@ class HovercraftMapper
         return $result;
     }
         
-    function deleteHuman($id_hovercraft){
+    function deleteHovercraft($id_hovercraft){
             
             $conn = $this->dbconn->getConnection();
             

@@ -36,7 +36,10 @@
                echo "No hovercraft assigned<br>";
            }
               else {
-                  echo "Hovercraft " . $humanObj->getHovercraft()->getName() . " assigned.";
+                  echo "<br>";               
+                  echo $humanObj->getName() . " has been assigned to the ";
+                  echo $humanObj->getHovercraft()->getName();
+                  echo "<br>";
               }
         }
         
@@ -88,5 +91,6 @@
             
            
         }  
-              
-              ?>
+
+        
+            

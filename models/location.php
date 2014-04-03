@@ -13,6 +13,13 @@ class Location
     protected $id_location;
     protected $name;
     
+        public function __construct($name = null) {
+      
+        if ($name !== null) {
+            $this->setName($name);
+        }
+        }
+    
         public function getId_location(){
             return $this->id_location;
         }

@@ -26,17 +26,14 @@
         
         $this->setIs_functional(TRUE);
         $this->setIs_jackedin(FALSE);        
-       //$this->setLocation("Zion");
-   
-        
-
-        
-       
+       //$this->setLocation("Zion")
         
     }
 
    
-    
+       public function getId_hovercraft(){
+           return $this->id_hovercraft;
+       }
    
        public function setName($name) {
             $this->name = $name;

@@ -26,7 +26,25 @@ class LocationMapper
         
         return $result;
         
+    }
+    
+    function retrieveAllLocations(){
+    
+     
+        $conn = $this->dbconn->getConnection();
+        
+        $result = $conn->query('SELECT * from location');
+        
+        //test stuff
+        
+    
+        
+       $result->setFetchMode(PDO::FETCH_CLASS, 'Location');
+       $humans = $result->fetchAll();
+        
+        return $locations;
+      
+    }
         //locations, maybe they do change or update or get deleted, but not sure on that one...
        
     }
-}

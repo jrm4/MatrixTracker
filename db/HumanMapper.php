@@ -8,21 +8,24 @@ class HumanMapper
         $this->dbconn = $dbconn;
     }
     
-    function createHuman($humanObj) {
+    function createHuman(Human $humanObj) {
         //Connect to database by creating PDO Object
         
         $conn = $this->dbconn->getConnection();
+
         
         $stmt = $conn->prepare("INSERT INTO human (name, is_redpill, is_jackedin, health, rank, id_hovercraft) VALUES (:name, :red, :jack, :health, :rank, :hov)");
+
         
         $stmt->bindParam(':name', $humanObj->getName());
         $stmt->bindParam(':red', $humanObj->getIs_redpill());
         $stmt->bindParam(':jack', $humanObj->getIs_jackedin());
         $stmt->bindParam(':health', $humanObj->getHealth());
         $stmt->bindParam(':rank', $humanObj->getRank());
-        $stmt->bindParam(':hov', $humanObj->getId_hovercraft());
+        $stmt->bindParam(':hov', $humanObj->getHovercraft()->getId_hovercraft);
         
         $result = $stmt->execute();
+      
         
         if ($result === false){
             var_dump($conn->errorCode());
@@ -47,7 +50,7 @@ class HumanMapper
        $humans = $result->fetchAll();
         
         return $humans;
-      
+       
     }
     
     function retrieveHuman($id_human)
@@ -105,6 +108,25 @@ class HumanMapper
             
             
         }
-    }   
+    
+ function findbyname($name){
+        
+       $conn = $this->dbconn->getConnection();
+        
+        //Run a query
+        $result = $conn->query('SELECT * FROM human WHERE name  = "$name";');      
+        
+        //Results from the databse will be converted into Student objects
+        $result->setFetchMode(PDO::FETCH_CLASS, 'human');           
+        $humans = $result->fetch(); 
+        
+
+        return $humans;  
+       
+       
+   } 
+        
+        
+        }   
     
     
