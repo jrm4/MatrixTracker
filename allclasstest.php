@@ -18,15 +18,14 @@ and open the template in the editor.
 require("./models/human.php");
 require("./models/location.php");
 require("./models/hovercraft.php");
-require("./db/dbconn.php");
-require("./db/HumanMapper.php");
+//require("./db/dbconn.php");
+//require("./db/HumanMapper.php");
 require("./view/fullreports.php");
-require("./db/LocationMapper.php");
+//require("./db/LocationMapper.php");
 
 
-$zion = new Location();
+$zion = new Location("Zion");
 
-$zion->setName("Zion");
 
 echo "<i> Behold the birth of " . $zion->getName();
 echo "</i><br>";
@@ -65,7 +64,7 @@ echo "<i> add neo to ship <br> </i>";
 
 $neo->setHovercraft($neb);
 
-echo "hovercraft set?";
+echo "<i> hovercraft set? </i>";
 
 
 fullhumanreport($neo);

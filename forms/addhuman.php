@@ -76,8 +76,31 @@ require('../human.php');
                         ?>
             </select>
             Health:  
-            <input type="text" name="health" /><br>
-            
+            <select name="health">
+                <?php
+                for ($health = 0; $health <= 10; $health++){
+                        echo "<option value='$health'> $health </option>";
+                }
+                        ?>
+            </select>
+            <select>
+            Hovercraft assignment?
+            <?php
+               echo "<option value=''> None Assigned </option>";
+               //this should be easy:
+               
+               $db = new Dbconn('localhost','Matrix','root','p|||p');
+               $hmapper = new HovercraftMapper($db);
+               
+               $allhovercrafts = $hmapper->retrieveAllHovercrafts();
+               
+
+               
+               foreach($allhovercrafts as $hovercraft){
+                   echo "<option value=$hovercraft> $hovercraft->getName() </option>";
+               }
+            ?>
+            </select>
           
             <br>
             <input type="submit" />

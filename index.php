@@ -19,51 +19,50 @@ require("./models/human.php");
 require("./models/location.php");
 require("./models/hovercraft.php");
 
+echo "models modelled<br>";
 //DB MAPPING
 require("./db/dbconn.php");
+require("./db/HovercraftMapper.php");
 require("./db/HumanMapper.php");
 require("./db/LocationMapper.php");
+
+
+// making mappers
+$db = new Dbconn('localhost','MatrixNew','root','p|||p');
+$locationmapper = new LocationMapper($db);
+$hovercraftmapper = new HovercraftMapper($db);
+$humanmapper = new HumanMapper($db);
 
 //VIEW
 require("./view/fullreports.php");
 
 
-
+//Making new zion
 $zion = new Location();
-
 $zion->setName("Zion");
 
 echo "<i> Behold the birth of " . $zion->getName();
 echo "</i><br>";
 
-$zion = NULL;
-/* write to db
+//DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+//writing zion to database
 echo "Now, writing it to the holy scrolls";
-$db = new Dbconn('localhost','Matrix','root','p|||p');
-$lmapper = new LocationMapper($db);
-$cresult = $lmapper->createLocation($zion);
-echo "zion has been added to the scrolls";
-*/
 
-$neb = new Hovercraft("Nebuchadnezzar");
-echo "<i> making the neb <br> </i>";
+$locationmapper = new LocationMapper($db);
+$lresult = $locationmapper->createLocation($zion);
+$zion = NULL;
 
-fullhovercraftreport($neb);
+echo "zion in scrolls, memory purged<br>";
+
+$alloc = $locationmapper->retrieveLocation(1);
 
 
+var_dump($alloc);
 
+//-------------------------------------------------------  making new hovercraft
 
-
-
+   
 /*
- *
-$neb->setLocation($zion);
-
-echo "<i> <br> MOOOOVING SHIP to zion</i>";
-
-
-fullhovercraftreport($neb);
-
 echo "<i> making neo <br></i>";
 
 $neo = new Human("Neo");
@@ -79,7 +78,7 @@ echo "hovercraft set?";
 
 
 fullhumanreport($neo);
-
+*/
 
 
 

@@ -19,7 +19,7 @@ class HovercraftMapper
         $stmt->bindParam(':name', $hovercraftObj->getName());
         $stmt->bindParam(':func', $hovercraftObj->getIs_functional());
         $stmt->bindParam(':jack', $hovercraftObj->getIs_jackedin());
-        $stmt->bindParam(':loc', $hovercraftObj->getLocation()->getId_location);
+        $stmt->bindParam(':loc', $hovercraftObj->getId_location());
 
         
         

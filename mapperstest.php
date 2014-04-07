@@ -40,7 +40,7 @@ echo "requires required";
 $zion = new Location("Zion");
 
 echo "behold and welcome to " . $zion->getName();
-echo "with a pk of " . $zion->getId_location();
+//echo "with a pk of " . $zion->getId_location();
 
 
 echo "writing zion to the magic scrolls";
@@ -49,7 +49,8 @@ $lmapper = new LocationMapper($db);
 $lresult = $lmapper->createLocation($zion);
 
 
-// FIRST, WE WILL MAKE A HUMAN
+
+
 
 $morfinmemory = new Human("Morpheus");
 $morfinmemory->setRank(9);
@@ -62,8 +63,8 @@ echo "writing to the scrolls";
 
 $mapper = new HumanMapper($db);
 
-
 $cresult = $mapper->createHuman($morfinmemory);
+
 
 
 print_r($cresult);
@@ -72,14 +73,14 @@ print_r($cresult);
 $morfinmemory = NULL;
 
 //lets pull him back
-
+/*
 $name = "Morpheus";
 
 $humans = $mapper->findbyname($name);
 
 print_r($humans);
 
-
+*/
 
 
 

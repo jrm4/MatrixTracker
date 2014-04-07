@@ -33,3 +33,13 @@
        return (strlen($str) < $checkLength);
    }
    
+   function checkrangeinclusive($int, $lower, $upper){
+       
+      if ($int >= $lower && $int <= $upper) {
+          return true;
+      } 
+     else {
+          return false;
+          
+      }
+   }

@@ -108,25 +108,5 @@ class HumanMapper
             
             
         }
-    
- function findbyname($name){
-        
-       $conn = $this->dbconn->getConnection();
-        
-        //Run a query
-        $result = $conn->query('SELECT * FROM human WHERE name  = "$name";');      
-        
-        //Results from the databse will be converted into Student objects
-        $result->setFetchMode(PDO::FETCH_CLASS, 'human');           
-        $humans = $result->fetch(); 
-        
-
-        return $humans;  
-       
-       
-   } 
-        
-        
-        }   
-    
+}
     

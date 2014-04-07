@@ -9,11 +9,11 @@
 
      
      //class location
-     protected $location;
+     protected $id_location;
      
      // class human
-     protected $captain;
-     protected $operator;
+     //protected $captain;
+     //protected $operator;
      
      
     public function __construct($name = NULL) {
@@ -63,15 +63,15 @@
             return $this->is_functional;
         }
         
-        public function setLocation($location){ #move the ship
-            $this->location = $location;
+        public function setId_location($id_location){ #move the ship
+            $this->id_location = $id_location;
        
         }
         
-        public function getLocation(){ #where's the ship?
-            return $this->location;
+        public function getId_location(){ #where's the ship?
+            return $this->id_location;
         }
-        
+        /*
          public function setCaptain(Human $captain) {
             $this->captain = $captain;
         }
@@ -90,7 +90,7 @@
     
         }
         
-   
+   */
      
         
       

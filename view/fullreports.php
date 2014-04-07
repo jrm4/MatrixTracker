@@ -70,14 +70,12 @@
             }
             
         
-            if ($hovercraft->getLocation() == NULL){
+            if ($hovercraft->getId_Location() == NULL){
                 echo "ERROR: NO LOCATION SPECIFIED FOR CRAFT<br>";
             }           
         
             else {         
-                $curr_loc = $hovercraft->getLocation();
-             
-                
+                $curr_loc = $hovercraft->getId_Location();   
             echo "<br>";
             echo "Current Location is: " . $curr_loc->getName();
             echo "<br>";
@@ -92,5 +90,3 @@
            
         }  
 
-        
-            

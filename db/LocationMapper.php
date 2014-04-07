@@ -28,6 +28,20 @@ class LocationMapper
         
     }
     
+    function retrieveLocation($id_location){
+                $conn = $this->dbconn->getConnection();
+        
+        //Run a query
+        $result = $conn->query("SELECT * FROM location WHERE id_location = $id_location;");      
+        
+        //Results from the databse will be converted into Student objects
+        $result->setFetchMode(PDO::FETCH_CLASS, 'Location');           
+        $locations = $result->fetch(); 
+        
+        return $locations;
+        }
+    
+        
     function retrieveAllLocations(){
     
      
@@ -45,6 +59,30 @@ class LocationMapper
         return $locations;
       
     }
-        //locations, maybe they do change or update or get deleted, but not sure on that one...
+      
+    function retrieveLocationByName($locationname){
+       $conn = $this->dbconn->getConnection();
+       echo "rbln connect";
+        $stmt = $conn->prepare("SELECT * from location WHERE name = :name");
+        $stmt->bindParam(':name', $locationname);
+        $result = $stmt->fetch(PDO::FETCH_CLASS, 'Location');
+   
+       return $result;
+        
+        
+       
+     /*
+       if (count($locations) = 1) {
+           return $locations[0];
+       }
+       elseif (count($locations) = 0) {
+           echo "THAT LOCATION NOT FOUND";
+       }
+       else {
+           echo "weird ass error";
+       }
+        
+       */
+    }
        
     }
