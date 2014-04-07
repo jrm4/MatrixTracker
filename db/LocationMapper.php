@@ -54,20 +54,24 @@ class LocationMapper
     
         
        $result->setFetchMode(PDO::FETCH_CLASS, 'Location');
-       $humans = $result->fetchAll();
+       $locations = $result->fetchAll();
         
         return $locations;
       
     }
       
     function retrieveLocationByName($locationname){
-       $conn = $this->dbconn->getConnection();
-       echo "rbln connect";
-        $stmt = $conn->prepare("SELECT * from location WHERE name = :name");
-        $stmt->bindParam(':name', $locationname);
-        $result = $stmt->fetch(PDO::FETCH_CLASS, 'Location');
-   
-       return $result;
+                $conn = $this->dbconn->getConnection();
+        
+        //Run a query
+        $result = $conn->query("SELECT * FROM location WHERE name = $locationname;");      
+        
+        //Results from the databse will be converted into Student objects
+        $result->setFetchMode(PDO::FETCH_CLASS, 'Location');           
+        $locations = $result->fetch(); 
+        
+        return $locations;
+        }
         
         
        
@@ -85,4 +89,4 @@ class LocationMapper
        */
     }
        
-    }
+    

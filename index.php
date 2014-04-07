@@ -54,10 +54,11 @@ $zion = NULL;
 
 echo "zion in scrolls, memory purged<br>";
 
-$alloc = $locationmapper->retrieveLocation(1);
+$alloc = $locationmapper->retrieveAllLocations();
+
+print_r($alloc);
 
 
-var_dump($alloc);
 
 //-------------------------------------------------------  making new hovercraft
 
