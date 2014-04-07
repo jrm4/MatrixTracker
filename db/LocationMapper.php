@@ -17,7 +17,8 @@ class LocationMapper
         
         $stmt->bindParam(':name', $locationObj->getName());
         
-        
+   
+ 
         $result = $stmt->execute();
         
         if ($result === false){
@@ -32,7 +33,8 @@ class LocationMapper
                 $conn = $this->dbconn->getConnection();
         
         //Run a query
-        $result = $conn->query("SELECT * FROM location WHERE id_location = $id_location;");      
+        $result = $conn->query("SELECT * FROM location WHERE id_location = $id_location;"); 
+        
         
         //Results from the databse will be converted into Student objects
         $result->setFetchMode(PDO::FETCH_CLASS, 'Location');           
@@ -59,12 +61,36 @@ class LocationMapper
         return $locations;
       
     }
-      
-    function retrieveLocationByName($locationname){
-                $conn = $this->dbconn->getConnection();
+    
+    
+    function retrieveLocationByName($name){
+         $conn = $this->dbconn->getConnection();
+         
+         $stmt = $conn->prepare("SELECT * FROM `location` WHERE name = :name;");
+         $stmt->bindParam(':name', $name);
+         
+         $stmt->execute();
+         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Location'); 
+         $result = $stmt->fetchAll();
+         
+         return $result;
+         
+        
+        
+         
+    }
+    
+    
+    
+    
+ // OBVIOUSLY THE BELOW IS FOR TESTING, GOOFY     
+    function retrieveLocationByNameIfItzZion(){
+               
         
         //Run a query
-        $result = $conn->query("SELECT * FROM location WHERE name = $locationname;");      
+        $result = $conn->query("SELECT * FROM location WHERE name = 'Zion';");
+        print_r($result);
+        
         
         //Results from the databse will be converted into Student objects
         $result->setFetchMode(PDO::FETCH_CLASS, 'Location');           
@@ -74,19 +100,8 @@ class LocationMapper
         }
         
         
+}
        
-     /*
-       if (count($locations) = 1) {
-           return $locations[0];
-       }
-       elseif (count($locations) = 0) {
-           echo "THAT LOCATION NOT FOUND";
-       }
-       else {
-           echo "weird ass error";
-       }
-        
-       */
-    }
+    
        
     

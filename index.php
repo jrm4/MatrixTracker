@@ -54,9 +54,27 @@ $zion = NULL;
 
 echo "zion in scrolls, memory purged<br>";
 
-$alloc = $locationmapper->retrieveAllLocations();
+$locarray =  $locationmapper->retrieveLocationByName("Zion");
 
-print_r($alloc);
+
+//print_r($locarray);
+
+$newzion = new Location();
+
+$newzion = $locarray[0];
+
+echo "o lord please <br>";
+echo $newzion->getName();
+
+
+
+
+
+
+
+
+
+
 
 
 
