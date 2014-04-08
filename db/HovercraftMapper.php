@@ -70,12 +70,12 @@ class HovercraftMapper
         
         $conn = $this->dbconn->getConnection();
         
-        $stmt = $conn->prepare('UPDATE hovercraft SET name = :name, is_functional = :func, is_jackedin = :jack, id_location = :loc WHERE id_hovercraft = :id');
+        $stmt = $conn->prepare("UPDATE hovercraft SET name = :name, is_functional = :func, is_jackedin = :jack, id_location = :loc WHERE id_hovercraft = :id");
         
         $stmt->bindParam(':name', $hovercraftObj->getName());
         $stmt->bindParam(':func', $hovercraftObj->getIs_functional());
         $stmt->bindParam(':jack', $hovercraftObj->getIs_jackedin());
-        $stmt->bindParam(':loc', $hovercraftObj->getLocation()->getId_location);
+        $stmt->bindParam(':loc', $hovercraftObj->getId_location());
         $result = $stmt->execute();
         
         if ($result === false){

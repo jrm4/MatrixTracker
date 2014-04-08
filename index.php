@@ -36,89 +36,9 @@ $humanmapper = new HumanMapper($db);
 //VIEW
 require("./view/fullreports.php");
 
-
-
-
-
-//Making new zion
-$zion = new Location();
-$zion->setName("Zion");
-
-echo "<i> Behold the birth of " . $zion->getName();
-echo "</i><br>";
-
-//DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-//writing zion to database
-echo "Now, writing it to the holy scrolls";
-
-$locationmapper = new LocationMapper($db);
-$lresult = $locationmapper->createLocation($zion);
-$zion = NULL;
-
-echo "zion in scrolls, memory purged<br>";
-
-$locarray =  $locationmapper->retrieveLocationByName("Zion");
-
-
-//print_r($locarray);
-
-$newzion = new Location();
-
-$newzion = $locarray[0];
-
-echo "o lord please <br>";
-echo $newzion->getName();
-
-
-//-------------------------------------------------------  making new hovercraft
-
-echo"<i> making ship <br></i>";
-$neb = new Hovercraft("Nebuchadnezzar");
-fullhovercraftreport($neb);
-
-$hresutl = $hovercraftmapper->createHovercraft($neb);
-$neb = NULL;
-
-$hovarray = $hovercraftmapper->retrieveHovercraftsByColumn('name', 'Nebuchadnezzar');
-
-$newneb = new Hovercraft();
-
-$newneb = $hovarray[0];
-
-//fullhovercraftreport($newneb);
-
-echo "<i><br>HERES THE MAGIC, SON";
-echo "<br>MOVING HOVERCRAFT</i>";
-
-
-$newneb->setId_location($newzion);
-
-fullhovercraftreport($newneb);
-
-
-///--------------------------------------------------------   
-
-
-
-echo "<i> KEEP THIS TRAIN GOIN making neo <br></i>";
-$neo = new Human("Neo");
-//fullhumanreport($neo);
-
-$huresult = $humanmapper->createHuman($neo);
-$neo = NULL;
-
-$humanarray = $humanmapper->retrieveHumansByColumn("name", "Neo");
-$newneo = new Human();
-$newneo = $humanarray[0];
-
-//fullhumanreport($newneo);
-
-echo "<i><br> ADDING NEO TO CRAFT</i>";
-
-$newneo->setHovercraft($newneb);
-
-
-fullhumanreport($newneo);
+// NOW,
+// 
+ 
 
 
 

@@ -85,14 +85,14 @@ $newneb = new Hovercraft();
 
 $newneb = $hovarray[0];
 
-//fullhovercraftreport($newneb);
+fullhovercraftreport($newneb);
 
 echo "<i><br>HERES THE MAGIC, SON";
 echo "<br>MOVING HOVERCRAFT</i>";
 
 
 $newneb->setId_location($newzion);
-
+//$hovercraftmapper->updateHovercraft($newneb);
 fullhovercraftreport($newneb);
 
 
@@ -110,8 +110,7 @@ $neo = NULL;
 $humanarray = $humanmapper->retrieveHumansByColumn("name", "Neo");
 $newneo = new Human();
 $newneo = $humanarray[0];
-
-//fullhumanreport($newneo);
+fullhumanreport($newneo);
 
 echo "<i><br> ADDING NEO TO CRAFT</i>";
 
@@ -119,6 +118,22 @@ $newneo->setHovercraft($newneb);
 
 
 fullhumanreport($newneo);
+
+echo "change stuff";
+
+$newneo->setRank(7);
+//$humanmapper->updateHuman($newneo);
+$newneo = NULL;
+
+
+$humanarray = $humanmapper->retrieveHumansByColumn("name", "Neo");
+$newnewneo = new Human();
+$newnewneo = $humanarray[0];
+fullhumanreport($newnewneo);
+
+
+
+
 
 
 

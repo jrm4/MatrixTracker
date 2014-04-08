@@ -16,8 +16,6 @@ class LocationMapper
         $stmt = $conn->prepare("INSERT INTO location (name) VALUES (:name)");
         
         $stmt->bindParam(':name', $locationObj->getName());
-        
-   
  
         $result = $stmt->execute();
         

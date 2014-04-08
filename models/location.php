@@ -32,3 +32,5 @@ class Location
             return $this->name;
         }
 }
+
+?>
