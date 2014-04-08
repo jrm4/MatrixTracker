@@ -50,9 +50,8 @@
      
         function fullhovercraftreport(Hovercraft $hovercraft){
             echo "<h1> Full Status for: " . $hovercraft->getName() . "</h1>";
+            echo "<br> HOVERCRAFT id is " . $hovercraft->getId_hovercraft();
             echo "<br>";
-            
-
             
 //           if ($this->crew == NULL){
 //               echo "Empty ship: Please add personnel<br>";

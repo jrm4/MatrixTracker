@@ -105,8 +105,6 @@ class HovercraftMapper
         
    function retrieveHovercraftsByColumn($column, $value){
             
-         
-
             $whitelist = array('name','is_functional','is_jackedin','id_location');
  
             if (array_search($column, $whitelist) === false){
