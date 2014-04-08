@@ -38,7 +38,8 @@
               else {
                   echo "<br>";               
                   echo $humanObj->getName() . " has been assigned to the ";
-                  echo $humanObj->getHovercraft()->getName();
+                  echo $humanObj->getHovercraft()->getName();            
+                  echo "<br>";
                   echo "<br>";
               }
         }

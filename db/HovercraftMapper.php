@@ -102,6 +102,31 @@ class HovercraftMapper
             
             
         }
+        
+   function retrieveHovercraftsByColumn($column, $value){
+            
+         
+
+            $whitelist = array('name','is_functional','is_jackedin','id_location');
+ 
+            if (array_search($column, $whitelist) === false){
+                echo "bad query";
+                return NULL;
+            }
+            else {
+                         $conn = $this->dbconn->getConnection();
+         
+         $stmt = $conn->prepare("SELECT * FROM `hovercraft` WHERE $column = :value;");
+         $stmt->bindParam(':value', $value);
+         
+         $stmt->execute();
+         $stmt->setFetchMode(PDO::FETCH_CLASS, 'hovercraft'); 
+         $result = $stmt->fetchAll();
+         
+         return $result;
+                
+                
+            }
     }   
-    
+}
     

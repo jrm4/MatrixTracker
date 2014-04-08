@@ -108,5 +108,56 @@ class HumanMapper
             
             
         }
+        
+        
+        function retrieveHumanByName($name){
+         $conn = $this->dbconn->getConnection();
+         
+         $stmt = $conn->prepare("SELECT * FROM `human` WHERE name = :name;");
+         $stmt->bindParam(':name', $name);
+         
+         $stmt->execute();
+         $stmt->setFetchMode(PDO::FETCH_CLASS, 'human'); 
+         $result = $stmt->fetchAll();
+         
+         return $result;
+         
+         
+      
+         
+    }
+    
+        function retrieveHumansByColumn($column, $value){
+            
+         
+
+            $whitelist = array('name','is_redpill','is_jackedin','health','rank','id_hovercraft');
+ 
+            if (array_search($column, $whitelist) === false){
+                echo "bad query";
+                return NULL;
+            }
+            else {
+                         $conn = $this->dbconn->getConnection();
+         
+         $stmt = $conn->prepare("SELECT * FROM `human` WHERE $column = :value;");
+         $stmt->bindParam(':value', $value);
+         
+         $stmt->execute();
+         $stmt->setFetchMode(PDO::FETCH_CLASS, 'human'); 
+         $result = $stmt->fetchAll();
+         
+         return $result;
+                
+                
+            }
+            
+            
+            
+        }
+        
+        
 }
+
+
     

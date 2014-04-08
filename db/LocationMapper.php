@@ -83,7 +83,7 @@ class LocationMapper
     
     
     
- // OBVIOUSLY THE BELOW IS FOR TESTING, GOOFY     
+ /* OBVIOUSLY THE BELOW IS FOR TESTING, GOOFY     
     function retrieveLocationByNameIfItzZion(){
                
         
@@ -99,7 +99,7 @@ class LocationMapper
         return $locations;
         }
         
-        
+   */     
 }
        
     
