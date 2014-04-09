@@ -22,7 +22,7 @@ class HumanMapper
         $stmt->bindParam(':jack', $humanObj->getIs_jackedin());
         $stmt->bindParam(':health', $humanObj->getHealth());
         $stmt->bindParam(':rank', $humanObj->getRank());
-        $stmt->bindParam(':hov', $humanObj->getHovercraft()->getId_hovercraft);
+        $stmt->bindParam(':hov', $humanObj->getId_hovercraft());
         
         $result = $stmt->execute();
       
@@ -74,7 +74,7 @@ class HumanMapper
         
         $stmt = $conn->prepare('UPDATE human SET name = :name, is_redpill = :red, is_jackedin = :jack, health = :health, rank = :rank, id_hovercraft = :hov WHERE id_human = :id');
         
-        $stmt->bindParam(':id', $humanObj->getId());
+        $stmt->bindParam(':id', $humanObj->getId_human());
         $stmt->bindParam(':name', $humanObj->getName());
         $stmt->bindParam(':red', $humanObj->getIs_redpill());
         $stmt->bindParam(':jack', $humanObj->getIs_jackedin());

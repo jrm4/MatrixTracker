@@ -1,8 +1,10 @@
 <?php
      
-        function fullhumanreport(Human $humanObj){
+  
+
+
+    function fullhumanreport(Human $humanObj){
             echo "<h1>Full report for " . $humanObj->getName() . "</h1>";
-           echo "PK id is" . $humanObj->getId();
             echo "<br>"; 
          
             if ($humanObj->getIs_redpill()){
@@ -32,13 +34,14 @@
                }
              
            
-           if ($humanObj->getHovercraft() === NULL){
+           if ($humanObj->getId_hovercraft() === NULL){
                echo "No hovercraft assigned<br>";
            }
               else {
                   echo "<br>";               
-                  echo $humanObj->getName() . " has been assigned to the ";
-                  echo $humanObj->getHovercraft()->getName();            
+                  echo $humanObj->getName();
+                  echo " has been assigned to the hovercraft id'd by ";
+                  echo $humanObj->getId_hovercraft();            
                   echo "<br>";
                   echo "<br>";
               }
@@ -74,10 +77,15 @@
                 echo "ERROR: NO LOCATION SPECIFIED FOR CRAFT<br>";
             }           
         
-            else {         
-                $curr_loc = $hovercraft->getId_Location();   
+        
+            else {
+                echo "grabbing location";
+             
+              
+             
+              
             echo "<br>";
-            echo "Current Location is: " . $curr_loc->getName();
+            echo "Current Location is";
             echo "<br>";
             }
             

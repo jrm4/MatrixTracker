@@ -15,17 +15,17 @@ and open the template in the editor.
         <?php
         
 //MODELS        
-require("./models/human.php");
-require("./models/location.php");
-require("./models/hovercraft.php");
+require_once("./models/human.php");
+require_once("./models/location.php");
+require_once("./models/hovercraft.php");
 
 echo "models modelled<br>";
 //DB MAPPING
-require("./db/dbconn.php");
+require_once("./db/dbconn.php");
 
-require("./db/HovercraftMapper.php");
-require("./db/HumanMapper.php");
-require("./db/LocationMapper.php");
+require_once("./db/HovercraftMapper.php");
+require_once("./db/HumanMapper.php");
+require_once("./db/LocationMapper.php");
 
 
 // making mappers
@@ -35,56 +35,121 @@ $hovercraftmapper = new HovercraftMapper($db);
 $humanmapper = new HumanMapper($db);
 
 //VIEW
-require("./view/fullreports.php");
+require_once("./view/fullreports.php");
 
 // NOW,
+
+// CREATE ZION IN MEMORY
 $newplace = new Location();
 $newplace->setName("Zion");
 
 echo "<i> BEHOLD " . $newplace->getName();
-
 echo "<br> writing to database</i>";
 
+// ADD ZION TO MYSQL DB
 $locerror = $locationmapper->createLocation($newplace);
 
-echo "done";
-
-echo "<br> ATTRIBUTES OF variable newplace:";
-echo "<br> Name is " . $newplace->getName();
-echo "<br> id_location is " . $newplace->getId_location();
-
+// REMOVE the ZION IN MEMORY SO THAT WE *KNOW* WE'RE only working from the DB
 $newplace = NULL;
 
-// Retrieve all locations and let user pick 
 
+// RETRIEVE ZION FROM DB so that we have its ID
 $locarray = $locationmapper->retrieveLocationByName("Zion");
-
 $newzion = new Location();
-
 $newzion = $locarray[0];
 
-echo "<br> ATTRIBUTES OF variable newzion -- pulled from mysql:";
-echo "<br> Name is " . $newzion->getName();
-echo "<br> id_location is " . $newzion->getId_location();
 
+
+//CREATION OF NEW Ship In MEMORY
 $newship = new Hovercraft("Nebuchadnezzar");
 
-echo "<br>";
-    
-//print_r($newship);
-fullhovercraftreport($newship);
 
+//MYSQL CREATE AND RETRIEVAL OF NEB
 $hovresult = $hovercraftmapper->createHovercraft($newship);
-
 $hovarray = $hovercraftmapper->retrieveHovercraftsByColumn("name", "Nebuchadnezzar");
-
 $newneb = new Hovercraft();
-
 $newneb = $hovarray[0];
-echo "<br>";
-//print_r($newneb);
 
-fullhovercraftreport($newneb);
+
+
+// THIS MOVES THE SHIP. 
+$newneb->setId_location($newzion->getId_location());
+$newbresult = $hovercraftmapper->updateHovercraft($newneb);
+
+//THIS GETS THE SHIPS LOCATION
+$newnewlocation = New Location();
+$newnewlocation = $locationmapper->retrieveLocation($newneb->getId_location());
+
+echo "<br>Current Location for " . $newneb->getName();
+echo " is " . $newnewlocation->getName();
+
+//CREATION OF PEOPLE
+
+$hum1 = new Human("Neo");
+$hum2 = new Human("Trinity");
+
+//echo "<br>people created";
+$humerror = $humanmapper->createHuman($hum1);
+$humerror = $humanmapper->createHuman($hum2);
+
+$hum1 = NULL;
+$hum2 = NULL;
+
+$humanarray = $humanmapper->retrieveAllHumans();
+//echo "people retrieved<br>";
+//echo "newneb id is " . $newneb->getId_hovercraft();
+//echo "<br>";
+
+
+foreach ($humanarray as $human){
+    // Assign to neb
+    $human->setId_hovercraft(1);
+//    print_r($human);
+    $huresult = $humanmapper->updateHuman($human);
+    //echo "<br>";
+}
+
+echo "db updated?";
+//---------------------------------------------------------------------------------------------------
+
+echo "<br><i>let's tell a story. The big ass update, if the sentinels get this info GOD HELP US ALL</i>";
+
+echo "------------------------------------------------------------------";
+
+//get all locations
+$locationsarray = $locationmapper->retrieveAllLocations();
+
+foreach ($locationsarray as $this_loc){
+    echo "<h1> Location: ";
+    echo $this_loc->getName();
+    echo "</h1>";
+    
+    //get all hovercrafts at that location
+    $hovercraftsarray = $hovercraftmapper->retrieveHovercraftsByColumn("id_location", $this_loc->getId_location());
+    
+    
+    foreach ($hovercraftsarray as $hovercraft){
+        echo "<h2> Hovercraft: ";
+        echo $hovercraft->getName();
+        echo "</h2>";
+        
+        //get all humans at that hovercraft
+        $humansarray = $humanmapper->retrieveAllHumans();
+        
+        foreach ($humanarray as $human){
+            echo "<h3> Crew member: ";
+            echo $human->getName();
+            echo "</h2>";
+        }
+       
+    }
+    
+}
+
+
+
+
+
 
 
      ?>
