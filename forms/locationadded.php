@@ -6,36 +6,13 @@ $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
 echo "root doc is $root";
 require_once "$root/allrequires.php";
 
-// maybe include this in a thing
-/*
- 
-require_once("../models/human.php");
-require_once("../models/location.php");
-require_once("../models/hovercraft.php");
 
-echo "models modelled<br>";
-//DB MAPPING
-require_once("../db/dbconn.php");
-require_once("../db/HovercraftMapper.php");
-require_once("../db/HumanMapper.php");
-require_once("../db/LocationMapper.php");
-
-
-// making mappers
-$db = new Dbconn('localhost','MatrixNew','root','p|||p');
-$locationmapper = new LocationMapper($db);
-$hovercraftmapper = new HovercraftMapper($db);
-$humanmapper = new HumanMapper($db);
-
-//VIEW
-require_once("../view/fullreports.php"); 
-*/
 var_dump($_POST);
 
 if (count($_POST) > 0){
     echo "post is > 0";
     
-    
+    // put validation here, but for now, we'll just assume no errors'
     $validationErrors = 0;
 
 

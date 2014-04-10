@@ -12,6 +12,21 @@ echo "root doc is $root";
 require_once "$root/allrequires.php";
 
 
+                
+                $lmapper = new LocationMapper($db);
+                
+                
+                $larray = $lmapper->retrieveAllLocations();
+
+                 $i = 0;   
+                
+                foreach ($larray as $this_loc){
+                    $locationstringarray[$i] = $this_loc->getName();
+                    $i++;
+                }
+            
+                var_dump($locationstringarray);
+
 
 echo "        <h4> Add new Hovercraft </h4>";
 echo "        <form action='hovercraftadded.php' method='post'>";
@@ -22,28 +37,24 @@ echo "            <input type='radio' name='is_functional' value='TRUE'> Yes <br
 echo "            <input type='radio' name='is_functional' value='FALSE'> No <br>";
             
  echo "           Note: If jacked in, you must set this elsewhere<br>";
-            
-echo "            <select>";
-echo "            Where is the ship?";
+ echo "            Where is the ship?";                
+echo "            <select name='hovercraft'>";
+            foreach ($locationstringarray as $locationname){
+                echo "<option value=\"" . $locationname . "\"> " . $locationname . "</option>";
+            }
+        echo "<option value=''> None Assigned </option>";
+echo " </select>";
 
 
-        
+
+
+
+/*
 
 echo "<option value=''> None Assigned </option>"; 
-echo "<option value=''> Mystery </option>";             
+          
 
-                
-                $lmapper = new LocationMapper($db);
-                var_dump($db);
-                
-                
-                $larray = $lmapper->retrieveAllLocations();
-                var_dump($larray);
-                foreach ($larray as $this_loc){
-                    print_r($this_loc);
-                    echo "<option value=$this_loc > $this_loc->getName() </option>";
-                }
-            
+
 
      
     echo "        </select>";

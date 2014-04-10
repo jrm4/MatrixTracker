@@ -86,13 +86,13 @@ $humanarray = $humanmapper->retrieveAllHumans();
 
 foreach ($humanarray as $human){
     // Assign to neb
-    $human->setId_hovercraft(1);
+    $human->setId_hovercraft($newneb->getId_hovercraft());
 //    print_r($human);
     $huresult = $humanmapper->updateHuman($human);
     //echo "<br>";
 }
 
-echo "db updated?";
+
 //---------------------------------------------------------------------------------------------------
 
 echo "<br><i>let's tell a story. The big ass update, if the sentinels get this info GOD HELP US ALL</i>";
@@ -129,7 +129,6 @@ foreach ($locationsarray as $this_loc){
     
 }
 
-echo "hey, just testing something";
 
 
 
