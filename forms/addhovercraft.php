@@ -18,14 +18,7 @@ require_once "$root/allrequires.php";
                 
                 $larray = $lmapper->retrieveAllLocations();
 
-                 $i = 0;   
-                
-                foreach ($larray as $this_loc){
-                    $locationstringarray[$i] = $this_loc->getName();
-                    $i++;
-                }
-            
-                var_dump($locationstringarray);
+
 
 
 echo "        <h4> Add new Hovercraft </h4>";
@@ -38,9 +31,10 @@ echo "            <input type='radio' name='is_functional' value='FALSE'> No <br
             
  echo "           Note: If jacked in, you must set this elsewhere<br>";
  echo "            Where is the ship?";                
-echo "            <select name='hovercraft'>";
-            foreach ($locationstringarray as $locationname){
-                echo "<option value=\"" . $locationname . "\"> " . $locationname . "</option>";
+echo "            <select name='id_location'>";
+
+            foreach ($larray as $this_loc){
+                echo "<option value=\"" . $this_loc->getId_location() . "\"> " . $this_loc->getName() . "</option>";
             }
         echo "<option value=''> None Assigned </option>";
 echo " </select>";
