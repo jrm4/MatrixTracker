@@ -27,6 +27,8 @@ $newplace->setName("Zion");
 echo "<i> BEHOLD " . $newplace->getName();
 echo "<br> writing to database</i>";
 
+
+
 // ADD ZION TO MYSQL DB
 $locerror = $locationmapper->createLocation($newplace);
 
@@ -127,6 +129,7 @@ foreach ($locationsarray as $this_loc){
     
 }
 
+echo "hey, just testing something";
 
 
 

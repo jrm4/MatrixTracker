@@ -2,8 +2,9 @@
 
 
 
-//include('formfunctions.php');
-
+$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
+echo "root doc is $root";
+require_once "$root/allrequires.php";
 
 // maybe include this in a thing
 /*
@@ -32,14 +33,15 @@ require_once("../view/fullreports.php");
 var_dump($_POST);
 
 if (count($_POST) > 0){
-    //error checkin
+    echo "post is > 0";
+    
     
     $validationErrors = 0;
 
 
     if (count($validationErrors == 0)) {
         $name = $_POST['name'];
-    }
+ 
 
     $curr_loc = new Location($name);
     
@@ -48,6 +50,9 @@ if (count($_POST) > 0){
     $locationmapper->createLocation($curr_loc);
     
     echo "and on db";
+    }
+    
+    
     $_POST = null;
     session_destroy();
     

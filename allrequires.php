@@ -1,7 +1,5 @@
 <?php
 
-echo "required start";
-
 $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
 
         
@@ -35,6 +33,6 @@ require_once("$root/view/fullreports.php");
 
 
 
-echo "all above required WORKS";
+echo "<h3><i>all requires required</i></h3>";
 ?>
 
