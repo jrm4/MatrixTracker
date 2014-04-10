@@ -6,7 +6,7 @@
 
 
 // maybe include this in a thing
-
+/*
  
 require_once("../models/human.php");
 require_once("../models/location.php");
@@ -28,7 +28,7 @@ $humanmapper = new HumanMapper($db);
 
 //VIEW
 require_once("../view/fullreports.php"); 
-
+*/
 var_dump($_POST);
 
 if (count($_POST) > 0){

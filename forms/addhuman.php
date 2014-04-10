@@ -1,8 +1,8 @@
 <?php
-
+/*
 include('formfunctions.php');
 require('../human.php');
- 
+ */
  $validationErrors = array();
  
  if (count($_POST) > 0 ){

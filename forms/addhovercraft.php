@@ -6,7 +6,7 @@
     <body>
 
 <?php
-
+/*
 include('formfunctions.php');
 
 
@@ -33,7 +33,7 @@ $humanmapper = new HumanMapper($db);
 
 //VIEW
 require_once("../view/fullreports.php"); 
-
+*/
 
 
 
