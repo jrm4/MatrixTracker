@@ -18,7 +18,7 @@ $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
 echo "root doc is $root";
 require_once "$root/allrequires.php";
 
-// NOW,
+/*NOW,
 
 // CREATE ZION IN MEMORY
 $newplace = new Location();
@@ -91,9 +91,44 @@ foreach ($humanarray as $human){
     $huresult = $humanmapper->updateHuman($human);
     //echo "<br>";
 }
-
+*/
 
 //---------------------------------------------------------------------------------------------------
+
+echo "<br><i>let's tell a story. The big ass update, if the sentinels get this info GOD HELP US ALL</i>";
+
+echo "------------------------------------------------------------------";
+
+//get all locations
+$locationsarray = $locationmapper->retrieveAllLocations();
+
+foreach ($locationsarray as $this_loc){
+    echo "<h1> Location: ";
+    echo $this_loc->getName();
+    echo "</h1>";
+    
+    //get all hovercrafts at that location
+    $hovercraftsarray = $hovercraftmapper->retrieveHovercraftsByColumn("id_location", $this_loc->getId_location());
+    
+    
+    foreach ($hovercraftsarray as $hovercraft){
+        echo "<h2> Hovercraft: ";
+        echo $hovercraft->getName();
+        echo "</h2>";
+        
+        //get all humans at that hovercraft
+        $humansarray = $humanmapper->retrieveHumansByColumn("id_hovercraft", $hovercraft->getId_hovercraft());
+        
+        foreach ($humansarray as $human){
+            echo "<h3> Crew member: ";
+            echo $human->getName();
+            echo "</h2>";
+        }
+       
+    }
+    
+}
+
 
 
 

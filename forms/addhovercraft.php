@@ -1,7 +1,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Add Hovercraft to Database/title>
+        <title>Add Hovercraft to Database</title>
     </head>
     <body>
 
