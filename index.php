@@ -115,14 +115,22 @@ foreach ($locationsarray as $this_loc){
         echo "<h2> Hovercraft: ";
         echo $hovercraft->getName();
         echo "</h2>";
-        
+       
         //get all humans at that hovercraft
         $humansarray = $humanmapper->retrieveHumansByColumn("id_hovercraft", $hovercraft->getId_hovercraft());
         
+        //var_dump($humansarray);
+        
         foreach ($humansarray as $human){
-            echo "<h3> Crew member: ";
+            echo "<h3>";
             echo $human->getName();
-            echo "</h2>";
+            if ($human->getIs_redpill() == FALSE){
+                echo "(natural-born)";
+            }
+            echo "</h3>Health: " . $human->getHealth();
+            echo " Rank: " . $human->getRank();
+            
+                    
         }
        
     }

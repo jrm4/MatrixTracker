@@ -46,7 +46,7 @@ class HumanMapper
         
     
         
-       $result->setFetchMode(PDO::FETCH_CLASS, 'human');
+       $result->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'human');
        $humans = $result->fetchAll();
         
         return $humans;
@@ -62,7 +62,7 @@ class HumanMapper
         $result = $conn->query("SELECT * FROM human WHERE id_human = $id_human;");      
         
         //Results from the databse will be converted into Student objects
-        $result->setFetchMode(PDO::FETCH_CLASS, 'human');           
+        $result->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'human');           
         $humans = $result->fetch(); 
         
         return $humans;  
@@ -117,7 +117,7 @@ class HumanMapper
          $stmt->bindParam(':name', $name);
          
          $stmt->execute();
-         $stmt->setFetchMode(PDO::FETCH_CLASS, 'human'); 
+         $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'human'); 
          $result = $stmt->fetchAll();
          
          return $result;
@@ -144,7 +144,15 @@ class HumanMapper
          $stmt->bindParam(':value', $value);
          
          $stmt->execute();
-         $stmt->setFetchMode(PDO::FETCH_CLASS, 'human'); 
+         
+         //THIS IS MIND BOGGLINGLY stupid and I have no idea why the default behavior 
+         // works this way. But lets explain: without the FETCH_PROPS_LATE bit below
+         // the function FIRST grabs the data and THEN runs the constructor, which
+         // means that any default constructor data will OVERWRITE what you've pulled
+         // from the db.  insane. 
+        
+         
+         $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'human'); 
          $result = $stmt->fetchAll();
          
          return $result;

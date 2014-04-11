@@ -35,7 +35,7 @@ class LocationMapper
         
         
         //Results from the databse will be converted into Student objects
-        $result->setFetchMode(PDO::FETCH_CLASS, 'Location');           
+        $result->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Location');           
         $locations = $result->fetch(); 
         
         return $locations;
@@ -53,7 +53,7 @@ class LocationMapper
         
     
         
-       $result->setFetchMode(PDO::FETCH_CLASS, 'Location');
+       $result->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Location');
        $locations = $result->fetchAll();
         
         return $locations;
@@ -68,7 +68,7 @@ class LocationMapper
          $stmt->bindParam(':name', $name);
          
          $stmt->execute();
-         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Location'); 
+         $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Location'); 
          $result = $stmt->fetchAll();
          
          return $result;

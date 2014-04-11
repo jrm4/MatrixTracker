@@ -44,7 +44,7 @@ echo "            <select name='id_location'>";
             }
         echo "<option value=''> None Assigned </option>";
 echo " </select>";
-echo "    <input type='submit' value='add new location'>";
+echo "    <input type='submit' value='add new hovercraft'>";
 
 
 

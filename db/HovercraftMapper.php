@@ -41,7 +41,7 @@ class HovercraftMapper
         
     
         
-       $result->setFetchMode(PDO::FETCH_CLASS, 'hovercraft');
+       $result->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'hovercraft');
        $hovercrafts = $result->fetchAll();
         
         return $hovercrafts;
@@ -57,7 +57,7 @@ class HovercraftMapper
         $result = $conn->query("SELECT * FROM hovercraft WHERE id_hovercraft = $id_hovercraft;");      
         
         //Results from the databse will be converted into Student objects
-        $result->setFetchMode(PDO::FETCH_CLASS, 'hovercraft');           
+        $result->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'hovercraft');           
         $hovercrafts = $result->fetch(); 
         
         return $hovercrafts;  
@@ -117,7 +117,7 @@ class HovercraftMapper
          $stmt->bindParam(':value', $value);
          
          $stmt->execute();
-         $stmt->setFetchMode(PDO::FETCH_CLASS, 'hovercraft'); 
+         $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'hovercraft'); 
          $result = $stmt->fetchAll();
          
          return $result;
