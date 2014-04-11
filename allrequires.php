@@ -23,9 +23,7 @@ $hovercraftmapper = new HovercraftMapper($db);
 $humanmapper = new HumanMapper($db);
 
 //VIEW
-require_once("$root/view/fullreports.php");
-
-
+require_once("$root/view/fullreports.php");  
 //forms
 
 //duh.

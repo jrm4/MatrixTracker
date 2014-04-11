@@ -2,6 +2,8 @@
 
 session_start();
 
+
+
 ?>
 
 <h1> Add page. What would like to add?</h1>
