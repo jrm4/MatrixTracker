@@ -27,10 +27,10 @@ echo "        <form action='hovercraftadded.php' method='post'>";
 echo "        Please enter a name: <input name='name' type='text' />";
 echo "           <br>";
 echo "            Is the craft currently functional?<br>"; 
-echo "            <input type='radio' name='is_functional' value='TRUE'> Yes <br>";
+echo "            <input type='radio' name='is_functional' value='TRUE' CHECKED > Yes <br>";
 echo "            <input type='radio' name='is_functional' value='FALSE'> No <br>";
-            
- echo "           Note: If jacked in, you must set this elsewhere<br>";
+echo " <br><i>NOTE: JACKED-IN status must be modified via update</i><br>";       
+
  echo "            Where is the ship?";                
 echo "            <select name='id_location'>";
 

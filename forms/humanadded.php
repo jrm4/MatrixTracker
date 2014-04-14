@@ -37,8 +37,11 @@ var_dump($_POST);
      $is_redpill = $_POST['is_redpill'];
      $rank = $_POST['rank'];
      $health = $_POST['health'];
+     
+     if ($_POST['id_hovercraft' != ''])
      $id_hovercraft = $_POST['id_hovercraft'];
       
+     
      
      if ($is_redpill == "TRUE"){
          $is_redpill_boolean = 1;

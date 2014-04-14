@@ -34,6 +34,6 @@ require_once("$root/view/fullreports.php");
 
 
 
-echo "<h3><i>all requires required</i></h3>";
+//echo "<h3><i>all requires required</i></h3>";
 ?>
 

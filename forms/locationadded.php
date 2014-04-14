@@ -3,14 +3,14 @@
 
 
 $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-echo "root doc is $root";
+//echo "root doc is $root";
 require_once "$root/allrequires.php";
 
 
-var_dump($_POST);
+//var_dump($_POST);
 
 if (count($_POST) > 0){
-    echo "post is > 0";
+  //  echo "post is > 0";
     
     // put validation here, but for now, we'll just assume no errors'
     $validationErrors = 0;
@@ -22,11 +22,12 @@ if (count($_POST) > 0){
 
     $curr_loc = new Location($name);
     
-    echo "location created in memory";
+    echo $curr_loc->getName();
+    echo " has been created in memory";
     
     $locationmapper->createLocation($curr_loc);
     
-    echo "and on db";
+    echo " and on db";
     }
     
     
