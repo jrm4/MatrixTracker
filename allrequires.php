@@ -17,7 +17,10 @@ require_once("$root/db/LocationMapper.php");
 
 
 // making mappers
-$db = new Dbconn('localhost','MatrixNew','root','p|||p');
+
+//Mysql login
+require_once("$root/db/dblogin.php");
+
 $locationmapper = new LocationMapper($db);
 $hovercraftmapper = new HovercraftMapper($db);
 $humanmapper = new HumanMapper($db);
