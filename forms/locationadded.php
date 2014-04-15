@@ -4,7 +4,7 @@
 
 $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
 //echo "root doc is $root";
-require_once "$root/allrequires.php";
+require_once "../allrequires.php";
 
 
 //var_dump($_POST);

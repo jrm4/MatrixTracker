@@ -10,7 +10,7 @@
 <?php
 
 $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-require_once "$root/allrequires.php";
+require_once "../allrequires.php";
 
 $_POST = null;
 

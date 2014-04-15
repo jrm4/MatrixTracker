@@ -1,7 +1,7 @@
 <?php
 
 $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-require_once "$root/allrequires.php"; 
+require_once "../allrequires.php"; 
 
 
  if (count($_POST) > 0 ){
@@ -48,7 +48,7 @@ require_once "$root/allrequires.php";
         else
             $is_jackedin_bool = NULL;
      
-     var_dump($_POST);
+     //var_dump($_POST);
      
        
      if ($_POST['rank'] != '')
@@ -59,10 +59,10 @@ require_once "$root/allrequires.php";
   
      
    $curr_human = $humanmapper->retrieveHuman($id_human);
-   echo "curr human on retrieval <br>"  ;
+   //echo "curr human on retrieval <br>"  ;
    
-   var_dump($curr_human);
-   echo "done";
+   //var_dump($curr_human);
+   //echo "done";
    
    $old_hov = $hovercraftmapper->retrieveHovercraft($curr_human->getId_hovercraft());
    
@@ -73,21 +73,13 @@ require_once "$root/allrequires.php";
         $curr_human->setId_hovercraft($id_hovercraft);
      }
        else {
-        echo "<br>Hovercraft unchanged<br>";
+        //echo "<br>Hovercraft unchanged<br>";
         $is_hovercraft_changed = "FALSE";
     }
 
  
-  echo "<br> First dump <br>" ;
-    var_dump($_POST);
-    
-   
-    
-    
-    
      // all this input needs way more validation.
-    
-     var_dump($rank);
+
     
     if ($rank != ''){
     $curr_human->setRank($rank);
@@ -99,13 +91,8 @@ require_once "$root/allrequires.php";
     
     $curr_human->setIs_jackedin($is_jackedin_bool);
 
-     echo "<br>";
-     var_dump($curr_human);
-     
-       echo "<Br><br>curr human on modification <br>"  ;
-   
-   var_dump($curr_human);
-   echo "done";
+ 
+
    
      
      

@@ -13,12 +13,11 @@ and open the template in the editor.
 
 
         <?php
-        
-$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-echo "root doc is $root";
-require_once "$root/allrequires.php";
 
 
+require_once "allrequires.php";
+
+echo "requires";
 
 
 
