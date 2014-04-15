@@ -1,11 +1,16 @@
 <?php
 
 
-$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-
+//. = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
         
-//MODELS        
+//MODELS 
+
+$root = $_SERVER['DOCUMENT_ROOT'] . "/MatrixTracker";
+
+
+
 require_once("$root/models/human.php");
+
 require_once("$root/models/location.php");
 require_once("$root/models/hovercraft.php");
 
@@ -35,6 +40,5 @@ require_once("$root/view/fullreports.php");
 
 
 
-//echo "<h3><i>all requires required</i></h3>";
 ?>
 

@@ -8,12 +8,17 @@
     <body>
 
 <?php
+session_start();
 
-$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-require_once "../allrequires.php";
+    if ($_SESSION['is_logged_in'] != "yes"){
+     header("Location: unauth.php");
+     exit();
+}
 
-$_POST = null;
 
+require_once("../allrequires.php");
+
+  
  $humanformstart =<<<EOD
         
 <h4> Add new human </h4>

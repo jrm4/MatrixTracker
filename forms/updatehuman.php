@@ -8,10 +8,14 @@
 
 <?php
 
-$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-require_once "../allrequires.php";
+session_start();
+if ($_SESSION['is_logged_in'] != "yes"){
+     header("Location: unauth.php");
+}
+      
 
-$_POST = null;
+$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
+require_once("../allrequires.php");
 
 
                 

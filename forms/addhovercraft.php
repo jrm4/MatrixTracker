@@ -7,14 +7,16 @@
 
 <?php
 
-echo "huh";
-$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
-require_once "../allrequires.php";
+//session_start();
 
-$_POST = null;
+//if ($_SESSION['is_logged_in'] != "yes"){
+//     header("Location: unauth.php");
+//}echo "huh";  
 
+require_once('../allrequires.php');
 
-                
+    
+    
                 $lmapper = new LocationMapper($db);
                 
                 $larray = $lmapper->retrieveAllLocations();

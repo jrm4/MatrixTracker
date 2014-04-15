@@ -1,10 +1,13 @@
 <?php
-
-
+session_start();
+if ($_SESSION['is_logged_in'] != "yes"){
+     header("Location: unauth.php");
+}
+      
 
 $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
 //echo "root doc is $root";
-require_once "../allrequires.php";
+require_once("../allrequires.php");
 
 
 //var_dump($_POST);

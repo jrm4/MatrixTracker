@@ -13,9 +13,9 @@ and open the template in the editor.
 
 
         <?php
+q
 
-
-require_once "allrequires.php";
+require_once('allrequires.php');
 
 echo "requires";
 
