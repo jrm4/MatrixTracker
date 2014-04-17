@@ -7,11 +7,11 @@
 
 <?php
 
-//session_start();
+session_start();
 
-//if ($_SESSION['is_logged_in'] != "yes"){
-//     header("Location: unauth.php");
-//}echo "huh";  
+if ($_SESSION['is_logged_in'] != "yes"){
+     header("Location: unauth.php");
+};  
 
 require_once('../allrequires.php');
 

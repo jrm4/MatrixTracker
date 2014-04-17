@@ -35,7 +35,7 @@ if (count($_POST) > 0){
     
     
     $_POST = null;
-    session_destroy();
+
     
    echo '<a href="addnew.php"> Back to add menu </a>';
     exit();

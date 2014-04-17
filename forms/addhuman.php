@@ -16,8 +16,12 @@ session_start();
 }
 
 
+
 require_once("../allrequires.php");
 
+$hovercraftmapper = new HovercraftMapper($db);
+
+$hovarray = $hovercraftmapper->retrieveAllHovercrafts();
   
  $humanformstart =<<<EOD
         
@@ -52,11 +56,11 @@ echo      '<select name = "id_hovercraft">';
         echo "<option value=''> None Assigned </option>";
                //this should be easy:
                               
-               $allhovercrafts = $hovercraftmapper->retrieveAllHovercrafts();
+              // $allhovercrafts = $hovercraftmapper->retrieveAllHovercrafts();
  
 
              
-               foreach($allhovercrafts as $hovercraft){
+               foreach($hovarray as $hovercraft){
                               echo "<option value=\"" . $hovercraft->getId_hovercraft() . "\"> " . $hovercraft->getName() . "</option>";
                }
             ?>

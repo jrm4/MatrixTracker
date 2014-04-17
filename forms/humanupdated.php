@@ -1,11 +1,13 @@
 <?php
 
+
+
 session_start();
 if ($_SESSION['is_logged_in'] != "yes"){
      header("Location: unauth.php");
 }
       
-
+echo "human updated page";
 
 $root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
 require_once("../allrequires.php"); 
@@ -55,7 +57,7 @@ require_once("../allrequires.php");
         else
             $is_jackedin_bool = NULL;
      
-     //var_dump($_POST);
+     //var_dump($is_jackedin_bool);
      
        
      if ($_POST['rank'] != '')
@@ -64,18 +66,19 @@ require_once("../allrequires.php");
      if ($_POST['health'] != '')
         $health = $_POST['health'];
   
-     
+        
    $curr_human = $humanmapper->retrieveHuman($id_human);
    //echo "curr human on retrieval <br>"  ;
-   
-   //var_dump($curr_human);
+
+ // var_dump($curr_human);
    //echo "done";
+    
+     if ($_POST['id_hovercraft'] != NULL ){
    
-   $old_hov = $hovercraftmapper->retrieveHovercraft($curr_human->getId_hovercraft());
-   
-  
+  // $old_hov = $hovercraftmapper->retrieveHovercraft($curr_human->getId_hovercraft());
+ 
      
-     if ($_POST['id_hovercraft'] != '' ){
+   
         $id_hovercraft = $_POST['id_hovercraft'];
         $curr_human->setId_hovercraft($id_hovercraft);
      }
@@ -84,7 +87,8 @@ require_once("../allrequires.php");
         $is_hovercraft_changed = "FALSE";
     }
 
- 
+
+   
      // all this input needs way more validation.
 
     
@@ -98,9 +102,7 @@ require_once("../allrequires.php");
     
     $curr_human->setIs_jackedin($is_jackedin_bool);
 
- 
 
-   
      
      
   if ($is_hovercraft_changed == "FALSE"){
@@ -110,8 +112,8 @@ require_once("../allrequires.php");
     
       echo "Reassiging ";
      echo $curr_human->getName();
-     echo " from ";
-     echo $old_hov->getName();
+   //  echo " from ";
+    // echo $old_hov->getName();
      echo " to ";
      
 
@@ -133,7 +135,7 @@ require_once("../allrequires.php");
     echo "<p> " . $err . " </p>";
 }
   }
-     session_destroy();
+     
     
    echo '<a href="addnew.php"> Back to add menu </a>';
      

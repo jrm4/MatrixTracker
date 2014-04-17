@@ -1,10 +1,12 @@
 <?php
 session_start();
+
+var_dump($_POST);
 if ($_SESSION['is_logged_in'] != "yes"){
      header("Location: unauth.php");
 }
 
-$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
+//$root = $_SERVER["DOCUMENT_ROOT"] . "/MatrixTracker";
 require_once("../allrequires.php"); 
 
 
@@ -49,9 +51,11 @@ require_once("../allrequires.php");
      
      if ($is_redpill == "TRUE"){
          $is_redpill_boolean = 1;
+         echo "redpill is true";
      }
      elseif ($is_redpill == "FALSE"){
          $is_redpill_boolean = 0;
+         echo "redpill is false";
      }
      else{
          echo "ERROR. Redpill or natural?";
@@ -82,7 +86,7 @@ require_once("../allrequires.php");
     echo "<p> " . $err . " </p>";
 }
   }
-     session_destroy();
+     
     
    echo '<a href="addnew.php"> Back to add menu </a>';
      
